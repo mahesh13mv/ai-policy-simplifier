@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 240 30% 8%;
+    --foreground: 210 20% 95%;
+
+    --card: 240 25% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 140 25% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 245 80% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 260 60% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 20% 18%;
+    --muted-foreground: 220 15% 55%;
+
+    --accent: 280 70% 65%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 20% 22%;
+    --input: 240 20% 22%;
+    --ring: 245 80% 65%;
+
+    --radius: 0.75rem;
+
+    --chat-user: 245 80% 60%;
+    --chat-user-foreground: 0 0% 100%;
+    --chat-ai: 240 20% 15%;
+    --chat-ai-foreground: 210 20% 92%;
+
+    --sidebar-background: 240 30% 8%;
+    --sidebar-foreground: 220 15% 70%;
+    --sidebar-primary: 245 80% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 20% 16%;
+    --sidebar-accent-foreground: 210 20% 92%;
+    --sidebar-border: 240 20% 18%;
+    --sidebar-ring: 245 80% 65%;
+
+    --font-heading: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Glass effect tokens */
+    --glass-bg: rgba(255, 255, 255, 0.06);
+    --glass-bg-hover: rgba(255, 255, 255, 0.10);
+    --glass-border: rgba(255, 255, 255, 0.10);
+    --glass-border-hover: rgba(255, 255, 255, 0.20);
+    --glass-blur: blur(20px);
+    --orb-primary: rgba(99, 102, 241, 0.35);
+    --orb-secondary: rgba(139, 92, 246, 0.28);
+    --orb-accent: rgba(236, 72, 153, 0.20);
+  }
+}
+
+@layer base {
+  
+  body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+    font-family: var(--font-body);
+    background: #0f0c29;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer components {
+
+  .chat-bubble-user {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.45), rgba(139, 92, 246, 0.38));
+    border: 1px solid rgba(99, 102, 241, 0.30);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    color: rgba(255, 255, 255, 0.92);
+    @apply rounded-2xl rounded-br-md px-4 py-3;
+  }
+
+  .chat-bubble-ai {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    color: rgba(255, 255, 255, 0.85);
+    @apply rounded-2xl rounded-bl-md px-4 py-3;
+  }
+
+  .suggestion-chip {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(180, 180, 255, 0.85);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    @apply px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer;
+  }
+
+  .suggestion-chip:hover {
+    background: rgba(99, 102, 241, 0.25);
+    border-color: rgba(99, 102, 241, 0.50);
+    color: #ffffff;
+  }
+
+  .format-badge {
+    @apply px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .glass-panel {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    -webkit-backdrop-filter: var(--glass-blur);
+    backdrop-filter: var(--glass-blur);
+  }
+
+  .btn-gradient {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.40);
+    transition: box-shadow 0.2s ease, filter 0.2s ease, transform 0.15s ease;
+  }
+
+  .btn-gradient:hover {
+    box-shadow: 0 6px 28px rgba(99, 102, 241, 0.60);
+    filter: brightness(1.08);
+  }
+
+  .btn-gradient:active {
+    transform: scale(0.97);
+  }
+
+  .glass-input {
+    background: rgba(255, 255, 255, 0.07) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    border-radius: 10px !important;
+    outline: none !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  .glass-input:focus {
+    border-color: rgba(99, 102, 241, 0.55) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+  }
+}
+
+@layer utilities {
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.28);
+  }
+
+  .backdrop-blur-2xl {
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+  }
+
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+
+  .backdrop-blur-sm {
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(72px);
+  }
+
+  .orb-indigo {
+    background: var(--orb-primary);
+    width: 340px;
+    height: 340px;
+    top: -80px;
+    left: 80px;
+  }
+
+  .orb-violet {
+    background: var(--orb-secondary);
+    width: 280px;
+    height: 280px;
+    bottom: -60px;
+    right: 120px;
+  }
+
+  .orb-pink {
+    background: var(--orb-accent);
+    width: 200px;
+    height: 200px;
+    top: 220px;
+    right: 40px;
+  }
+
+  @keyframes orb-drift {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-50px) scale(1.03);
+  }
+  100% {
+    transform: translateY(-100px) scale(1);
+  }
+}
+
+  .orb-animate {
+    animation: orb-drift 14s ease-in-out infinite;
+  }
+}
